@@ -1,0 +1,27 @@
+{# templates/products/product-one.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+        <article>
+            <h1>
+                {{ product.name }}
+            </h1>
+            <p>
+                Producent:
+                <strong>
+                    {{ product.manufacturer }}
+                </strong>
+            </p>
+            <p>
+                Cena: {{ product.price }} zł
+            </p>
+            <h3>
+                <a href="/products/all">
+                    Powrót
+                </a>
+            </h3>
+        </article>
+    </div>
+{% endblock %}
