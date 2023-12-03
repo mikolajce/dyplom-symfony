@@ -10,21 +10,20 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'homepage')]
+    #[Route('/', name: 'homepage')]
     public function home(EntityManagerInterface $em): Response
     {
+        $pid = random_int(1,500);
+        $cid = random_int(1,50);
+        $oid = random_int(1,100);
 
-        $db = $em->getRepository(Product::class);
-
-        $data = $db->find(random_int(1,500));
-
-        if(!$data) throw $this->createNotFoundException(
-            'blad wyswietlenia produktu'
-        );
+        $data = $em->getRepository(Product::class)->find($pid);
 
         return $this->render('/index.html.twig', parameters: [
-            'product' => $data
+            'product' => $data,
+            'pid' => $pid,
+            'cid' => $cid,
+            'oid' => $oid
         ]);
     }
-
 }

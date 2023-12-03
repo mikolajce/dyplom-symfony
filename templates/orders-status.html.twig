@@ -3,28 +3,25 @@
 {% block body %}
     <div>
         <h1>
-            Lista wszystkich produktów
+            Lista wszystkich zamówień o statusie: {{ status }}
         </h1>
     </div>
     <div>
-        {% for key, product in products %}
+        {% for key, order in orders %}
             <article>
                 <h1>
-                    <a href="/products/{{ product.id }}">
-                        {{ product.name }}
+                    <a href="/orders/{{ order.id }}">
+                        Zamówienie #{{ order.id }}
                     </a>
                 </h1>
                 <p>
-                    Producent:
+                    Cena:
                     <strong>
-                        {{ product.manufacturer }}
+                        {{ order.sumtotal }} zł
                     </strong>
                 </p>
-                <p>
-                    Cena: {{ product.price }} zł
-                </p>
             </article>
-            {% else %}
+        {% else %}
             <h3>
                 Nie znaleziono produktów o podanych kryteriach
             </h3>
